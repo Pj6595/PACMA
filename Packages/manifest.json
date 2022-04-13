@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.sussymama.pacma-telemetry": "file:D:/Pj6595/Desktop/Apuntes/UAJ/Pacmetricas",
+    "com.sussymama.pacma-telemetry": "https://github.com/Pj6595/Pacmetricas.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.5.7",
     "com.unity.ide.rider": "2.0.7",

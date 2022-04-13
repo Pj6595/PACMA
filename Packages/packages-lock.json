@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.sussymama.pacma-telemetry": {
-      "version": "file:D:/Pj6595/Desktop/Apuntes/UAJ/Pacmetricas",
+      "version": "https://github.com/Pj6595/Pacmetricas.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "79bc885ac7ab60ed2c579fbb2f86267deb0649fe"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
