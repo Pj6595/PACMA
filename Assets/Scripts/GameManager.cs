@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Pacmetricas_G01;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
+
+        Tracker.GetInstance().Init();
+        Tracker.GetInstance().TrackEvent(new InitGameEvent());
     }
 
     private void OnEnable()
@@ -77,7 +81,7 @@ public class GameManager : MonoBehaviour
         if (command == "Start")
         {
             Debug.Log("Vamo a jugal ... cuando llegue el coche");
-
+            Tracker.GetInstance().TrackEvent(new MenuPassedEvent());
             car.StartCar();
 
         }
