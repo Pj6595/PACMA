@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-
     public CarMainMenu car;
 
     private SetSignImg papel;
@@ -26,6 +25,9 @@ public class GameManager : MonoBehaviour
     public AudioClip pointUpAudio;
     public AudioClip pointDownAudio;
     private AudioSource audioSource;
+
+    [SerializeField]
+    private Tracker tracker;
 
     int hospitalDestino = 0;
     Color colorDestino;
@@ -56,7 +58,6 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
 
-        Tracker.GetInstance().Init();
         Tracker.GetInstance().TrackEvent(new InitGameEvent());
     }
 
