@@ -14,7 +14,8 @@ public class IngameVoiceDetection : VoiceDetection
     protected override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Debug.Log(args.text);
-        cityManager.playerTurn(command);
+
+        cityManager.playerTurn(command,args.text);
 
         currentSound = sonidosGata[Random.Range(0, sonidosGata.Count - 1)];
         soundPlayer.clip = currentSound;

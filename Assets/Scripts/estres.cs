@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Pacmetricas_G01;
 
 public class estres : MonoBehaviour
 {
@@ -16,7 +17,12 @@ public class estres : MonoBehaviour
     {
         UpdateEstres(stressIncrement*Time.deltaTime);
         if (nivelEstres >= 100)
+        {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
+            //Mandamos el evento de que el jugador se desmayó y perdió la partida
+            Tracker.GetInstance().TrackEvent(new PlayerDeadEvent());
+        }
+            
     }
 
     public void UpdateEstres(float nivel)

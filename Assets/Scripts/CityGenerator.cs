@@ -1,3 +1,4 @@
+using Pacmetricas_G01;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +68,7 @@ public class CityGenerator : MonoBehaviour
     public void StartMoving()
     {
         moving = true;
+        Tracker.GetInstance().TrackEvent(new InitRunEvent());
     }
 
     void generaTilesSalidaInterseccion(Vector3 direccionVec)
@@ -295,23 +297,34 @@ public class CityGenerator : MonoBehaviour
         initMovement(playerNextDir, inter);
     }
 
-    public void playerTurn(string direction)
+    public void playerTurn(string direction, string phraseDetected)
     {
         playerDecision = true;
         if (direction == "Derecha")
         {
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
             playerNextDir = Sentido.Derecha;
             bocadillo.showBocadillo(Bocadillos.derecha);
         }
         else if (direction == "Izquierda")
         {
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
             playerNextDir = Sentido.Izquierda;
             bocadillo.showBocadillo(Bocadillos.izquierda);
         }
         else if (direction == "Recto")
         {
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
             playerNextDir = Sentido.Recto;
             bocadillo.showBocadillo(Bocadillos.recto);
         }
+
+        //Intentos fallidos de decir la direccion(Igual para quitar la mancha¿?¿?¿)
+
+        //if (phraseDetected != "")
+        //{
+        //    Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
+        //}
+        
     }
 }

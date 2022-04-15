@@ -1,3 +1,4 @@
+using Pacmetricas_G01;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,14 @@ public class VoiceDetection : MonoBehaviour
     protected virtual void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Debug.Log(args.text);
-        GameManager.instance.SendCommand(command);
+
+        //Mandamos las palabras dichas si era para empezar
+        if(command == "Start")
+        {
+            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(args.text));
+        }
+
+        GameManager.instance.SendCommand(command, args.text);
     }
 
     // Update is called once per frame

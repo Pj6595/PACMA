@@ -8,6 +8,6 @@ public class BotonesScript : MonoBehaviour
     // Start is called before the first frame update
     public void sendCommand()
     {
-        GameManager.instance.SendCommand(Comando);
+        GameManager.instance.SendCommand(Comando,"");
     }
 }

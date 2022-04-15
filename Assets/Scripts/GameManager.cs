@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         record += p;
     }
 
-    public void SendCommand(string command)
+    public void SendCommand(string command, string phraseDetected)
     {
         if (command == "Start")
         {
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         }
         else if (command == "Exit")
         {
+            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(phraseDetected));
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
