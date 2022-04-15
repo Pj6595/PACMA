@@ -302,19 +302,19 @@ public class CityGenerator : MonoBehaviour
         playerDecision = true;
         if (direction == "Derecha")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(/*phraseDetected,*/ direction));
             playerNextDir = Sentido.Derecha;
             bocadillo.showBocadillo(Bocadillos.derecha);
         }
         else if (direction == "Izquierda")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(/*phraseDetected,*/ direction));
             playerNextDir = Sentido.Izquierda;
             bocadillo.showBocadillo(Bocadillos.izquierda);
         }
         else if (direction == "Recto")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected, direction));
+            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(/*phraseDetected,*/ direction));
             playerNextDir = Sentido.Recto;
             bocadillo.showBocadillo(Bocadillos.recto);
         }

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private Tracker tracker;
+    private List<Configuration> persistenceConfiguration;
 
     int hospitalDestino = 0;
     Color colorDestino;
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
 
+        Tracker.GetInstance().Init(persistenceConfiguration);
         Tracker.GetInstance().TrackEvent(new InitGameEvent());
     }
 
