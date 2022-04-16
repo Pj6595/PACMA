@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
         else if (command == "Exit")
         {
             Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(phraseDetected));
-            Tracker.GetInstance().End(); //Cerramos el tracker
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
@@ -162,5 +161,11 @@ public class GameManager : MonoBehaviour
             pointsAnim = pointsText.gameObject.GetComponent<Animation>();
             audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Tracker.GetInstance().TrackEvent(new EndGameEvent());
+        Tracker.GetInstance().End(); //Cerramos el tracker
     }
 }
