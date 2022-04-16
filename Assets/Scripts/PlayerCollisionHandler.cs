@@ -44,6 +44,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         else if (hospital)
         {
             //jaja ganaste
+            Pacmetricas_G01.Tracker.GetInstance().FlushAllEvents();
             SceneManager.LoadSceneAsync("Victoria");
         }
     }

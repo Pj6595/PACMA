@@ -21,8 +21,9 @@ public class estres : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
             //Mandamos el evento de que el jugador se desmayó y perdió la partida
             Tracker.GetInstance().TrackEvent(new PlayerDeadEvent());
+            Tracker.GetInstance().FlushAllEvents();
         }
-            
+
     }
 
     public void UpdateEstres(float nivel)
