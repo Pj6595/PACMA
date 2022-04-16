@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
         else if (command == "Exit")
         {
             Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(phraseDetected));
+            Tracker.GetInstance().End(); //Cerramos el tracker
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
