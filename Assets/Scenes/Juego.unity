@@ -212,10 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218207747}
   - component: {fileID: 218207749}
-  - component: {fileID: 218207748}
-  - component: {fileID: 218207751}
   - component: {fileID: 218207750}
-  - component: {fileID: 218207752}
   m_Layer: 0
   m_Name: Voice Detection
   m_TagString: Untagged
@@ -237,40 +234,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &218207748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218207746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f1d57661979944c94819b190cf72f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - Derecha
-  - A tu derecha
-  - A la derecha
-  - Tira a la derecha
-  - Deecha
-  - Mueve a la derecha
-  - Tira a la derecha
-  - Pa la derecha
-  - Para la derecha
-  - Alvar bobo
-  - Mueve derecha
-  - Libertad
-  command: Derecha
-  cityManager: {fileID: 1607931597}
-  sonidosGata:
-  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
-  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
-  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
-  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
-  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
-  soundPlayer: {fileID: 670654403}
 --- !u!114 &218207749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +261,59 @@ MonoBehaviour:
   - Comunismo
   - Socialismo
   command: Izquierda
+  commands:
+  - m_Keywords:
+    - Izquierda
+    - A tu izquierda
+    - A la izquierda
+    - Tira a la izquierda
+    - Iquierda
+    - Mueve a la izquierda
+    - Tira a la izquierda
+    - Pa la izquierda
+    - Para la izquierda
+    - Sans de undertale
+    - Mueve izquierda
+    - Comunismo
+    - Socialismo
+    command: Izquierda
+  - m_Keywords:
+    - Derecha
+    - A tu derecha
+    - A la derecha
+    - Tira a la derecha
+    - Deecha
+    - Mueve a la derecha
+    - Tira a la derecha
+    - Pa la derecha
+    - Para la derecha
+    - Alvar bobo
+    - Mueve derecha
+    - Libertad
+    command: Derecha
+  - m_Keywords:
+    - recto
+    - sigue
+    - continua
+    - adelante
+    - todo recto
+    - enfrente
+    - en frente
+    - tira enfrente
+    - reto
+    - sigue adelante
+    - sigue recto
+    - to tieso para adelante
+    - todo tieso para adelante
+    - para adelante
+    - sigue adelante
+    command: Recto
+  - m_Keywords:
+    - Salir
+    - Menu
+    - Escape
+    - Pausa
+    command: Menu
   cityManager: {fileID: 1607931597}
   sonidosGata:
   - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
@@ -323,61 +339,6 @@ MonoBehaviour:
   volToRecoverStress: 0.7
   minStressIncrement: 75
   maxStressIncrement: 150
---- !u!114 &218207751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218207746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f1d57661979944c94819b190cf72f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - recto
-  - sigue
-  - continua
-  - adelante
-  - todo recto
-  - enfrente
-  - en frente
-  - tira enfrente
-  - reto
-  - sigue adelante
-  - sigue recto
-  - to tieso para adelante
-  - todo tieso para adelante
-  - para adelante
-  - sigue adelante
-  command: Recto
-  cityManager: {fileID: 1607931597}
-  sonidosGata:
-  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
-  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
-  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
-  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
-  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
-  soundPlayer: {fileID: 670654403}
---- !u!114 &218207752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218207746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90b3a6120fb0eb4ca887f8830e3cabf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - Salir
-  - Menu
-  - Escape
-  - Pausa
-  command: Menu
 --- !u!1 &380646963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,72 +1746,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1661293615
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1661293618}
-  - component: {fileID: 1661293617}
-  - component: {fileID: 1661293616}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1661293616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661293615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1661293617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661293615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1661293618
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661293615}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1720240592
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51193064, g: 0.68196833, b: 0.9767086, a: 1}
+  m_IndirectSpecularColor: {r: 0.5118491, g: 0.681943, b: 0.97673017, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   pointsToWin: 10
   pointUpAudio: {fileID: 0}
   pointDownAudio: {fileID: 0}
+  persistenceConfiguration: []
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,7 +1058,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081480363
 GameObject:
@@ -1153,7 +1154,7 @@ RectTransform:
   - {fileID: 359271842}
   - {fileID: 756866860}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1304,85 +1305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351153246}
   m_CullTransparentMesh: 1
---- !u!1 &1362765508
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1362765510}
-  - component: {fileID: 1362765509}
-  - component: {fileID: 1362765511}
-  m_Layer: 0
-  m_Name: Voice Detection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1362765509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362765508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90b3a6120fb0eb4ca887f8830e3cabf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - Jugar
-  - Jugar al juego
-  - Entrar
-  - Empezar
-  - Empezar juego
-  - Empezar partida
-  - Play
-  - Comenzar
-  - Comenzar partida
-  - Comenzar juego
-  - Gas gas gas
-  - Dale carla
-  - To tieso pa alante
-  - Todo tieso para adelante
-  - Corre joder
-  - Al hospital
-  - Nos vamos al hospital
-  command: Start
---- !u!4 &1362765510
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362765508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 472.12915, y: 280.1543, z: 4.301697}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1362765511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362765508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90b3a6120fb0eb4ca887f8830e3cabf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - Exit
-  - Salir
-  command: Exit
 --- !u!1 &1489194518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,8 +1529,6 @@ GameObject:
   - component: {fileID: 1858960603}
   - component: {fileID: 1858960608}
   - component: {fileID: 1858960607}
-  - component: {fileID: 1858960609}
-  - component: {fileID: 1858960610}
   - component: {fileID: 1858960611}
   m_Layer: 5
   m_Name: Canvas UI
@@ -1703,7 +1623,7 @@ RectTransform:
   - {fileID: 1489194519}
   - {fileID: 595842767}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1726,6 +1646,43 @@ MonoBehaviour:
   - derecha
   - a la derecha
   command: derecha
+  commands:
+  - m_Keywords:
+    - izquierda
+    - a la izquierda
+    command: izquierda
+  - m_Keywords:
+    - derecha
+    - a la derecha
+    command: derecha
+  - m_Keywords:
+    - recto
+    - adelante
+    - delante
+    command: recto
+  - m_Keywords:
+    - Jugar
+    - Jugar al juego
+    - Entrar
+    - Empezar
+    - Empezar juego
+    - Empezar partida
+    - Play
+    - Comenzar
+    - Comenzar partida
+    - Comenzar juego
+    - Gas gas gas
+    - Dale carla
+    - To tieso pa alante
+    - Todo tieso para adelante
+    - Corre joder
+    - Al hospital
+    - Nos vamos al hospital
+    command: Start
+  - m_Keywords:
+    - Exit
+    - Salir
+    command: Exit
   controlsTeacher: {fileID: 1858960608}
 --- !u!114 &1858960608
 MonoBehaviour:
@@ -1755,41 +1712,6 @@ MonoBehaviour:
   Tickverde: {fileID: 777451428}
   MainMenusceneName: MenuPrincipal
   timeToChangeScene: 1
---- !u!114 &1858960609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858960602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e7f60e10a94f4439d4ee5b5dfa835b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - izquierda
-  - a la izquierda
-  command: izquierda
-  controlsTeacher: {fileID: 1858960608}
---- !u!114 &1858960610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858960602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e7f60e10a94f4439d4ee5b5dfa835b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Keywords:
-  - recto
-  - adelante
-  - delante
-  command: recto
-  controlsTeacher: {fileID: 1858960608}
 --- !u!114 &1858960611
 MonoBehaviour:
   m_ObjectHideFlags: 0
