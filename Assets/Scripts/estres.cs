@@ -13,15 +13,22 @@ public class estres : MonoBehaviour
     public float stressIncrement;
     public ShaderEstresScript shaderEstressScript;
 
+    private bool isBlackOut = false;
+
     private void Update()
     {
         UpdateEstres(stressIncrement*Time.deltaTime);
-        if (nivelEstres >= 100)
+        if (nivelEstres >= 100 && !isBlackOut)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
+            isBlackOut = true;  //Marcamos que el jugador se ha desmayado
+
             //Mandamos el evento de que el jugador se desmayó y perdió la partida
             Tracker.GetInstance().TrackEvent(new PlayerDeadEvent());
             Tracker.GetInstance().FlushAllEvents();
+
+            //Cargamos la escena de perder la partida
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
+            
         }
 
     }
@@ -38,5 +45,9 @@ public class estres : MonoBehaviour
         animador.speed = 1 + (nivelEstres / 10);
         shaderEstressScript.updateIntensityVignete(nivelEstres / 100);
         //Debug.Log("Velocidad de la animación " + animador.speed);
+
+
+        //Mandamos el evento del tamaño de la mancha si corresponde
+        Tracker.GetInstance().TrackEvent(new BlackoutIntensityVolume(0.5f));
     }
 }

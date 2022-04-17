@@ -1,3 +1,4 @@
+using Pacmetricas_G01;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,5 +58,8 @@ private AudioClip clipRecord = null;
 	{
 		micLoudness = LevelMax();
 		victoryScreen.setMicVol(micLoudness);
+
+		//Mandamos el volumen del micro si es tiempo para hacerlo
+		Tracker.GetInstance().TrackEvent(new MicrophoneVolume(micLoudness));
 	}
 }
