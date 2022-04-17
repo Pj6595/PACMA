@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pacmetricas_G01;
 
 public class VoiceVolumeDetection : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class VoiceVolumeDetection : MonoBehaviour
     public float volToRecoverStress;
     public float minStressIncrement;
     public float maxStressIncrement;
-    
-    
+    public float eventTime = 5f;
+
+    private float time = 0f;
     private AudioClip clipRecord = null;
     int sampleWindow = 128; //Numero de samples que se restan
     private float stressDifference;
@@ -67,6 +69,14 @@ public class VoiceVolumeDetection : MonoBehaviour
         if (micLoudness >= volToRecoverStress)
         {
             stress.UpdateEstres(-StressIncrement()*Time.deltaTime);
+        }
+
+        //Mandamos el volumen del micro si es tiempo para hacerlo
+        time += Time.deltaTime;
+        if (time >= eventTime)
+        {
+            Tracker.GetInstance().TrackEvent(new MicrophoneVolume(micLoudness));
+            time = 0f;
         }
     }
 

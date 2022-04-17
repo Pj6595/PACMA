@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
         Tracker.GetInstance().Init(persistenceConfiguration, eventsEnabled);
         Tracker.GetInstance().TrackEvent(new InitGameEvent());
     }

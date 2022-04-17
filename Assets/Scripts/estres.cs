@@ -12,11 +12,21 @@ public class estres : MonoBehaviour
     public Animator animador;
     public float stressIncrement;
     public ShaderEstresScript shaderEstressScript;
+    public float eventTime = 5f;
 
     private bool isBlackOut = false;
+    private float time = 0f;
 
     private void Update()
     {
+        //Mandamos el evento del tamaño de la mancha si corresponde
+        time += Time.deltaTime;
+        if (time >= eventTime)
+        {
+            Tracker.GetInstance().TrackEvent(new BlackoutIntensityVolume(nivelEstres / 100));
+            time = 0f;
+        }
+
         UpdateEstres(stressIncrement*Time.deltaTime);
         if (nivelEstres >= 100 && !isBlackOut)
         {
@@ -30,7 +40,6 @@ public class estres : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
             
         }
-
     }
 
     public void UpdateEstres(float nivel)
@@ -45,9 +54,5 @@ public class estres : MonoBehaviour
         animador.speed = 1 + (nivelEstres / 10);
         shaderEstressScript.updateIntensityVignete(nivelEstres / 100);
         //Debug.Log("Velocidad de la animación " + animador.speed);
-
-
-        //Mandamos el evento del tamaño de la mancha si corresponde
-        Tracker.GetInstance().TrackEvent(new BlackoutIntensityVolume(0.5f));
     }
 }
