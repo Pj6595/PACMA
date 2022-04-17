@@ -41,7 +41,7 @@ public class VoiceDetection : MonoBehaviour
         //Mandamos las palabras dichas si era para empezar
         if(command == "Start")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(args.text));
+            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(args.text + ": Jugar"));
         }
 
         GameManager.instance.SendCommand(command, args.text);
