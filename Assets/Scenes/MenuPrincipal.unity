@@ -1539,16 +1539,19 @@ MonoBehaviour:
     enabledEvents: 0
     eventQueueSize: 0
     serverURL: 
+    requestContentType: 
   - persistenceType: 0
     serializationType: 1
     enabledEvents: 0
     eventQueueSize: 0
     serverURL: 
+    requestContentType: 
   - persistenceType: 1
     serializationType: 0
     enabledEvents: 0
     eventQueueSize: 2
     serverURL: https://pacmetricas-default-rtdb.europe-west1.firebasedatabase.app/events.json
+    requestContentType: application/json
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
