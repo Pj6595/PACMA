@@ -1,0 +1,7 @@
+{
+    "TrackableEvents" :[
+        "INIT_GAME",
+        "INIT_RUN",
+        "TRY_PHRASE_TAXI"
+    ]
+}

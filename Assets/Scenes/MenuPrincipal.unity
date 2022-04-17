@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.51189977, g: 0.68197674, b: 0.9767056, a: 1}
+  m_IndirectSpecularColor: {r: 0.47328395, g: 0.6626476, b: 0.96649283, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1536,22 +1536,20 @@ MonoBehaviour:
   persistenceConfiguration:
   - persistenceType: 0
     serializationType: 0
-    enabledEvents: 0
     eventQueueSize: 0
     serverURL: 
     requestContentType: 
   - persistenceType: 0
     serializationType: 1
-    enabledEvents: 0
     eventQueueSize: 0
     serverURL: 
     requestContentType: 
   - persistenceType: 1
     serializationType: 0
-    enabledEvents: 0
     eventQueueSize: 2
     serverURL: https://pacmetricas-default-rtdb.europe-west1.firebasedatabase.app/events.json
     requestContentType: application/json
+  eventsConfiguration: EventConfiguration.json
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Pacmetricas_G01;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,7 +60,27 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
 
-        Tracker.GetInstance().Init(persistenceConfiguration);
+        //JSON del archivo de configuración, debe de estar almacenado en la carpeta StreamingAssets
+        string json = File.ReadAllText(Application.streamingAssetsPath + "/EventConfiguration.json");
+        var configurationData = JObject.Parse(json);
+
+        //Voy a recorrer todos los EventosTrackeables que existan en este json
+        JArray eventos = (JArray)configurationData["TrackableEvents"];
+
+        EventTypes eventsEnabled = EventTypes._None;
+        for (int i = 0; i < eventos.Count; i++)
+        {
+            string evType = eventos[i].Value<string>();
+            //Si el string que nos han introducido de evento se corresponde con alguno de los
+            //que tenemos definidos en el diccionario de eventos lo añadimos a nuestra máscara de bits
+            if (Pacmetricas_G01.Event.EventIDs.ContainsKey(evType))
+            {
+                eventsEnabled |= Pacmetricas_G01.Event.EventIDs[evType];
+            }
+        }
+
+
+        Tracker.GetInstance().Init(persistenceConfiguration, eventsEnabled);
         Tracker.GetInstance().TrackEvent(new InitGameEvent());
     }
 
