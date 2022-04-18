@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Pacmetricas_G01;
 
 
 public class PantallaVictoria : MonoBehaviour
@@ -15,6 +16,7 @@ public class PantallaVictoria : MonoBehaviour
     {
         if (v > threshHold)
         {
+            Tracker.GetInstance().TrackEvent(new PlayerWonEvent());
             SceneManager.LoadSceneAsync("MenuPrincipal");
         }
     }
