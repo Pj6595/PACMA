@@ -246,21 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f1d57661979944c94819b190cf72f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Keywords:
-  - Izquierda
-  - A tu izquierda
-  - A la izquierda
-  - Tira a la izquierda
-  - Iquierda
-  - Mueve a la izquierda
-  - Tira a la izquierda
-  - Pa la izquierda
-  - Para la izquierda
-  - Sans de undertale
-  - Mueve izquierda
-  - Comunismo
-  - Socialismo
-  command: Izquierda
   commands:
   - m_Keywords:
     - Izquierda
@@ -314,6 +299,7 @@ MonoBehaviour:
     - Escape
     - Pausa
     command: Menu
+  isInMenu: 0
   cityManager: {fileID: 1607931597}
   sonidosGata:
   - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
@@ -339,6 +325,7 @@ MonoBehaviour:
   volToRecoverStress: 0.7
   minStressIncrement: 75
   maxStressIncrement: 150
+  eventTime: 5
 --- !u!1 &380646963
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,6 +50,8 @@ public class CityGenerator : MonoBehaviour
     public Color colorParticulasMinimo;
     public Color incrementoColorParticulas;
 
+    protected Intersection currentInt;
+
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
@@ -170,6 +172,8 @@ public class CityGenerator : MonoBehaviour
     {
         Destroy(oldInters);
         oldInters = inters;
+
+        currentInt = inter;
 
         bool conductorDecidio = false;
         if (!playerDecision || !inter.salidas.Contains(dir))
@@ -302,19 +306,19 @@ public class CityGenerator : MonoBehaviour
         playerDecision = true;
         if (direction == "Derecha")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected + ": " + direction));
+            Tracker.GetInstance().TrackEvent(new DirectionTaxiEvent(phraseDetected + ": " + direction + ": " + currentInt.getCorrect()));
             playerNextDir = Sentido.Derecha;
             bocadillo.showBocadillo(Bocadillos.derecha);
         }
         else if (direction == "Izquierda")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected + ": " + direction));
+            Tracker.GetInstance().TrackEvent(new DirectionTaxiEvent(phraseDetected + ": " + direction + ": " + currentInt.getCorrect()));
             playerNextDir = Sentido.Izquierda;
             bocadillo.showBocadillo(Bocadillos.izquierda);
         }
         else if (direction == "Recto")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(phraseDetected + ": " + direction));
+            Tracker.GetInstance().TrackEvent(new DirectionTaxiEvent(phraseDetected + ": " + direction + ": " + currentInt.getCorrect()));
             playerNextDir = Sentido.Recto;
             bocadillo.showBocadillo(Bocadillos.recto);
         }
