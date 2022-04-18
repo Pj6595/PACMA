@@ -57,9 +57,9 @@ public class VoiceDetection : MonoBehaviour
         {
             //if menu
             if (isInMenu)
-                Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(text));
+                Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(text + ": Command not found"));
             else
-                Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(text));
+                Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(text + ": Command not found"));
             Debug.LogFormat("Dictation result: {0}", text);
         }
     }

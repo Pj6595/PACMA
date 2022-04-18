@@ -104,9 +104,9 @@ public class GameManager : MonoBehaviour
         if (command == "Start")
         {
             Debug.Log("Vamo a jugal ... cuando llegue el coche");
+            Tracker.GetInstance().TrackEvent(new CommandMenuEvent(phraseDetected + ": Start"));
             Tracker.GetInstance().TrackEvent(new MenuPassedEvent());
             car.StartCar();
-
         }
         else if (command == "Menu") {
             StartCoroutine(LoadSceneAsync("MenuPrincipal"));
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
         else if (command == "Exit")
         {
-            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(phraseDetected + ": Salir"));
+            Tracker.GetInstance().TrackEvent(new CommandMenuEvent(phraseDetected + ": Exit"));
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
