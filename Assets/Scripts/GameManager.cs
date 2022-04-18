@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         //Voy a recorrer todos los EventosTrackeables que existan en este json
         JArray eventos = (JArray)configurationData["TrackableEvents"];
 
-        EventTypes eventsEnabled = EventTypes._None;
+        EventTypes eventsEnabled = EventTypes.NONE;
         for (int i = 0; i < eventos.Count; i++)
         {
             string evType = eventos[i].Value<string>();
