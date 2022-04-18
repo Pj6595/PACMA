@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.5458736, g: 0.6000905, b: 0.86419, a: 1}
+  m_IndirectSpecularColor: {r: 0.51189977, g: 0.68197674, b: 0.9767056, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1536,19 +1536,30 @@ MonoBehaviour:
   persistenceConfiguration:
   - persistenceType: 0
     serializationType: 0
-    eventQueueSize: 5
+    eventQueueSize: 2
     serverURL: 
     requestContentType: 
+    requestHeader: []
   - persistenceType: 0
     serializationType: 1
-    eventQueueSize: 5
+    eventQueueSize: 2
     serverURL: 
     requestContentType: 
+    requestHeader: []
   - persistenceType: 1
     serializationType: 0
-    eventQueueSize: 2
+    eventQueueSize: 5
     serverURL: https://pacmetricas-default-rtdb.europe-west1.firebasedatabase.app/events.json
     requestContentType: application/json
+    requestHeader: []
+  - persistenceType: 1
+    serializationType: 0
+    eventQueueSize: 5
+    serverURL: http://uaj.fdi.ucm.es/c2122/telemetry/grupo01
+    requestContentType: application/json
+    requestHeader:
+    - key: x-api-key
+      value: 6de9f470716a7395bc3ff0dbbf64352f
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
