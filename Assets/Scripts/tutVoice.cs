@@ -7,9 +7,9 @@ public class tutVoice : VoiceDetection
 {
     public ControlsTeacher controlsTeacher;
 
-    protected override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    protected override void OnPhraseRecognized(string phrase, string command)
     {
-        Debug.Log(args.text);
+        Debug.Log(phrase);
         controlsTeacher.sendCommand(command);
     }
 }

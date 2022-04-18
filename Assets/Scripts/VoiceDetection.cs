@@ -1,4 +1,5 @@
 using Pacmetricas_G01;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,57 +8,133 @@ using UnityEngine.Windows.Speech;
 
 public class VoiceDetection : MonoBehaviour
 {
+    [Serializable]
+    public struct Command
+    {
+        public string[] m_Keywords;
+        public string command;
+    }
 
-    public string[] m_Keywords = new string[] { "izquierda", "derecha","recto","sigue" };
+    public Command[] commands;
 
-    public string command;
+    protected DictationRecognizer m_Dictation;
 
-    protected KeywordRecognizer m_Recognizer;
-
+    public bool isInMenu = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Recognizer = new KeywordRecognizer(m_Keywords);
-        m_Recognizer.OnPhraseRecognized += OnPhraseRecognized;
-        m_Recognizer.Start();
+        StartDictation();
 
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnSceneUnloaded(Scene current)
     {
-        if (m_Recognizer != null && m_Recognizer.IsRunning)
+        StopDictation();
+    }
+
+    protected virtual void OnPhraseRecognized(string phrase, string command)
+    {
+        Debug.Log(phrase);       
+
+        GameManager.instance.SendCommand(command, phrase);
+    }
+
+    void OnDictationResult(string text, ConfidenceLevel confidence)
+    {
+        bool found = false;
+        foreach (Command c in commands)
         {
-            m_Recognizer.OnPhraseRecognized -= OnPhraseRecognized;
-            m_Recognizer.Stop();
+            if (Array.FindIndex(c.m_Keywords, x => x.ToLower() == text.ToLower()) != -1)
+            {
+                found = true;
+                break;
+            }
+        }
+        //si ning�n comando lo reconoce, creamos un evento
+        if (!found)
+        {
+            //if menu
+            if (isInMenu)
+                Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(text));
+            else
+                Tracker.GetInstance().TrackEvent(new PhraseTaxiEvent(text));
+            Debug.LogFormat("Dictation result: {0}", text);
         }
     }
 
-    protected virtual void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    void OnDictationHypothesis(string text)
     {
-        Debug.Log(args.text);
-
-        //Mandamos las palabras dichas si era para empezar
-        if(command == "Start")
+        Debug.LogFormat("Dictation hypothesis: {0}", text);
+        foreach (Command c in commands)
         {
-            Tracker.GetInstance().TrackEvent(new PhraseMenuEvent(args.text + ": Jugar"));
+            if (Array.FindIndex(c.m_Keywords, x => x.ToLower() == text.ToLower()) != -1)
+            {
+                OnPhraseRecognized(text, c.command);
+                m_Dictation.Stop();
+                m_Dictation.Start();
+                break;
+            }
         }
+    }
 
-        GameManager.instance.SendCommand(command, args.text);
+    private void OnDictationComplete(DictationCompletionCause completionCause)
+    {
+        switch (completionCause)
+        {
+            case DictationCompletionCause.TimeoutExceeded:
+            case DictationCompletionCause.PauseLimitExceeded:
+            case DictationCompletionCause.Canceled:
+            case DictationCompletionCause.Complete:
+                // Restart required
+                StopDictation();
+                StartDictation();
+                break;
+            case DictationCompletionCause.UnknownError:
+            case DictationCompletionCause.AudioQualityFailure:
+            case DictationCompletionCause.MicrophoneUnavailable:
+            case DictationCompletionCause.NetworkFailure:
+                // Error
+                StopDictation();
+                break;
+        }
+    }
+    private void OnDictationError(string error, int hresult)
+    {
+        //Debug.Log("Dictation error: " + error);
     }
 
     // Update is called once per frame
     void Update()
     {
     }
+    
+    protected void StartDictation()
+    {
+        m_Dictation = new DictationRecognizer();
+        m_Dictation.DictationResult += OnDictationResult;
+        m_Dictation.DictationHypothesis += OnDictationHypothesis;
+        m_Dictation.DictationComplete += OnDictationComplete;
+        m_Dictation.DictationError += OnDictationError;
+        m_Dictation.Start();
+    }
+
+    protected void StopDictation()
+    {
+        if (m_Dictation != null && m_Dictation.Status == SpeechSystemStatus.Running)
+        {
+            m_Dictation.DictationHypothesis -= OnDictationHypothesis;
+            m_Dictation.DictationResult -= OnDictationResult;
+            m_Dictation.DictationError -= OnDictationError;
+            m_Dictation.DictationComplete -= OnDictationComplete;
+            m_Dictation.Stop();
+            m_Dictation.Dispose();
+        }
+    }
 
     protected void OnApplicationQuit()
     {
-        if(m_Recognizer != null && m_Recognizer.IsRunning)
-        {
-            m_Recognizer.OnPhraseRecognized -= OnPhraseRecognized;
-            m_Recognizer.Stop();
-        }
+        StopDictation();
     }
 }

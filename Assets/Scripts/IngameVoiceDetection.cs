@@ -11,11 +11,11 @@ public class IngameVoiceDetection : VoiceDetection
 
     private AudioClip currentSound;
 
-    protected override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    protected override void OnPhraseRecognized(string phrase, string command)
     {
-        Debug.Log(args.text);
+        Debug.Log(phrase);
 
-        cityManager.playerTurn(command,args.text);
+        cityManager.playerTurn(command, phrase);
 
         currentSound = sonidosGata[Random.Range(0, sonidosGata.Count - 1)];
         soundPlayer.clip = currentSound;

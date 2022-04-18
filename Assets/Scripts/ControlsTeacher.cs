@@ -94,6 +94,8 @@ public class ControlsTeacher : MonoBehaviour
 				if (flechaRecto.GetAlpha() < 1f) progreso++;
 				flechaRecto.SetAlpha(1);
 				break;
+			default:
+				break;
 		}
 	}
 
