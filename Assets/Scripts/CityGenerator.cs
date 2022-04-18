@@ -128,7 +128,7 @@ public class CityGenerator : MonoBehaviour
                 {
                     //Crear normal
                     inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-
+                    currentInt = inters.GetComponent<Intersection>();
                 }
                 signGenerator.PlacePoste(inters);
             }
@@ -172,8 +172,6 @@ public class CityGenerator : MonoBehaviour
     {
         Destroy(oldInters);
         oldInters = inters;
-
-        currentInt = inter;
 
         bool conductorDecidio = false;
         if (!playerDecision || !inter.salidas.Contains(dir))
